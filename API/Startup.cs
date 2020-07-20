@@ -56,6 +56,13 @@ namespace API
 
             services.AddSwaggerDocumentation();
 
+            services.AddCors(opt => 
+            {
+                opt.AddPolicy("CorsPolicy", policy => {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
+
             services.AddApplicationServices();
 
             // services.AddSwaggerGen(c => 
@@ -81,9 +88,13 @@ namespace API
             app.UseRouting();
             app.UseStaticFiles();
 
+            app.UseCors("CorsPolicy");
+
             app.UseAuthorization();
 
             app.UseSwaggerDocumentation();
+
+           
 
             // app.UseSwagger();
             // app.UseSwaggerUI(c => {c.SwaggerEndpoint("/swagger/v1/swagger.json", "Skinet API v1");});
