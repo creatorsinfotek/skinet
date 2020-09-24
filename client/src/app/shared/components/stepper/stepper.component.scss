@@ -17,4 +17,8 @@ button.nav-link {
         outline: none;
     }
 
+    &:disabled:not(.active) {
+        color: #333;
+    }
+
 }

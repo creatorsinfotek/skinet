@@ -7,11 +7,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5"/>
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.7.1"/>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1"/>
+    <PackageReference Include="Stripe.net" Version="39.5.0"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj"/>
   </ItemGroup>
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>    
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 </Project>
