@@ -4,8 +4,10 @@
         <section class="col-3">
            <ng-container *ngIf="brands && types">
             <h5 class="text-warning ml-3 mt-3 mb-3">Sort</h5>
-            <select class="custom-select mb-4 mt-2" (change)="onSortSelected($event.target.value)">
+            <select class="custom-select mb-4 mt-2"  
+                (change)="onSortSelected($event.target.value)">                
                 <option *ngFor="let sort of sortOptions"
+                [selected]="shopParams.sort === sort.value"
                 [value]="sort.value"
                 >{{sort.name}}</option>
                
@@ -40,7 +42,7 @@
                     [pageSize]="shopParams.pageSize"
                 ></app-paging-header>
                 <div class="form-inline" *ngIf="products">
-                    <input (keyup.enter)="onSearch()" class="form-control mr-2" #search style="width: 300px;" placeholder="Search" type="text">
+                    <input (keyup.enter)="onSearch()" class="form-control mr-2" #searchTerm style="width: 300px;" placeholder="Search" type="text">
                     <button (click)="onSearch()" class="btn btn-outline-primary my-2">Search</button>
                     <button (click)="onReset()" class="btn btn-outline-success ml-2 my-2">Reset</button>
                 </div>
@@ -56,6 +58,7 @@
                 <app-pager
                     [pageSize]="shopParams.pageSize"
                     [totalCount] ="totalCount"
+                    [pageNumber]="shopParams.pageNumber"
                     (pageChanged)= "onPageChanged($event)"
                 >
                 </app-pager>
